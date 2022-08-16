@@ -2,6 +2,9 @@ import React, {useState, useEffect} from "react";
 import { Button, Container, Header, Segment } from "semantic-ui-react";
 import { useWeb3React } from "@web3-react/core";
 import Governence from "../abi/Governence.json";
+import CreateProposal from "../components/CreateProposal";
+import Vote from "../components/Vote";
+
 function DaoPage() {
   const GOVERNENCE_ADDRESS = "0xe442f72b802bbcf7b3ec7b90278becc2fc46985c";
   const [contract, setContract] = useState();
@@ -11,7 +14,33 @@ function DaoPage() {
       const res = new library.eth.Contract(Governence, GOVERNENCE_ADDRESS);
       setContract(res);
     }
-  }, [active]);
+  }, [active]); 
+
+const [isCreate,setisCreate] = useState(false);
+const [toVote,settoVote] = useState(false);
+const [voteType,setvoteType] = useState("For");
+
+function create_proposal(){
+  setisCreate(true)
+}
+
+function close_create_proposal(){
+  setisCreate(false)
+}
+
+function forVote(){
+  setvoteType("For")
+  settoVote(true);  
+}
+
+function againstVote(){
+  setvoteType("Against")
+  settoVote(true);  
+}
+
+function closeVote() {
+  settoVote(false);
+}
 
 
   return (
@@ -22,7 +51,13 @@ function DaoPage() {
           color="purple"
           content="Create a Proposal"
           style={{ marginTop: "1em", marginBottom: "1em" }}
+          onClick={create_proposal}
         />
+
+        <CreateProposal open={isCreate} close={close_create_proposal}/>
+        <Vote open={toVote} vote={voteType} close={closeVote} />
+
+
         {/* <br /> */}
         <Button color="purple" content="Vote" style={{ marginBottom: "1em" }} />
         {/* <br /> */}
@@ -50,8 +85,8 @@ function DaoPage() {
               </td>
               <td>
                 <Button.Group vertical>
-                  <Button color="purple">For</Button>
-                  <Button basic color="purple">Against</Button>
+                  <Button color="purple" onClick={forVote}>For</Button>
+                  <Button basic color="purple" onClick={againstVote}>Against</Button>
                 </Button.Group>
               </td>
             </tr>

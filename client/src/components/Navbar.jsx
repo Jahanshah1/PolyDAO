@@ -26,7 +26,7 @@ function Navbar() {
   }, []);
 
   return (
-    <Menu fixed="top" size="massive" inverted color="purple">
+    <Menu fixed="top" size="big" inverted color="purple">
       <Container>
         <Link to="/">
           <Menu.Item as="a" header>
