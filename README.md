@@ -33,7 +33,7 @@ link : https://alfajores-blockscout.celo-testnet.org/address/0xe442f72B802BBcF7b
 
 
 
-### ERC20 smart contract deployed on Celo Alfajores Testnet
+### ERC20 smart contract deployed on Polygon Mumbai Testnet
 link : https://mumbai.polygonscan.com/tx/0x22f3e5b1669b5f3c080818442a6ce80329e3bfa3b0bbe4369bda42dd63833334
 Contract Address : 0x25648830919d2d1c505b0b6a53cd52c88faabd9d
 
