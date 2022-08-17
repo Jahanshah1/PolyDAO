@@ -30,7 +30,7 @@ function Navbar() {
       <Container>
         <Link to="/">
           <Menu.Item as="a" header>
-            NFT DAO
+            Poly DAO
           </Menu.Item>
         </Link>
         <Menu.Item as="a">

@@ -60,7 +60,7 @@ const HomePage = () => {
     const contract = new ethers.Contract(ca,Governence,signer);
     await contract.propose(
       ["0xe442f72B802BBcF7b3ec7b90278BecC2Fc46985c"],
-      [1],
+      [100],
       ["0xe442f72B802BBcF7b3ec7b90278BecC2Fc46985c"],
       "Test"
     )
