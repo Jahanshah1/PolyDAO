@@ -28,8 +28,9 @@ Users can directly view details of an NFT collections through the native platfor
 ### Features of the governance smart contract 
 <img width="231" alt="Features of governance" src="https://user-images.githubusercontent.com/92823408/180609401-2a36c59c-ad56-4bff-a0d4-872a6d28fee9.PNG">
 
-### Governance smart contract deployed on Celo Alfajores Testnet
-link : https://alfajores-blockscout.celo-testnet.org/address/0xe442f72B802BBcF7b3ec7b90278BecC2Fc46985c/transactions
+### Governance smart contract deployed on Polygon Mumbai testnet 
+link : https://mumbai.polygonscan.com/tx/0x40b18fbb2d28e0701aeacbacd5f930e4a6322da768b9df9d9254bde6fdf3309f
+Contract Address : 0xe442f72b802bbcf7b3ec7b90278becc2fc46985c
 
 
 
