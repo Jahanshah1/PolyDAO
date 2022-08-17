@@ -54,7 +54,7 @@ https://youtu.be/tvyhJXkAqd0
 ## Run locally 
 Clone the project 
 ```bash 
-git clone https://github.com/Jahanshah1/NFTDAO
+git clone https://github.com/Jahanshah1/PolyDAO
 ```
 Go to client directory 
 ```bash 
