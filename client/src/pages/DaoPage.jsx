@@ -4,6 +4,7 @@ import { useWeb3React } from "@web3-react/core";
 import Governence from "../abi/Governence.json";
 import CreateProposal from "../components/CreateProposal";
 import Vote from "../components/Vote";
+import {ethers} from "ethers";
 
 function DaoPage() {
   const GOVERNENCE_ADDRESS = "0xe442f72b802bbcf7b3ec7b90278becc2fc46985c";
@@ -42,6 +43,9 @@ function closeVote() {
   settoVote(false);
 }
 
+const provider = new ethers.providers.Web3Provider(window.ethereum);
+const signer = provider.getSigner()
+console.log(signer);
 
   return (
     <div>
@@ -55,7 +59,7 @@ function closeVote() {
         />
 
         <CreateProposal open={isCreate} close={close_create_proposal}/>
-        <Vote open={toVote} vote={voteType} close={closeVote} />
+        <Vote open={toVote} vote={voteType} close={closeVote} provider={signer} />
 
 
         {/* <br /> */}
@@ -85,7 +89,7 @@ function closeVote() {
               </td>
               <td>
                 <Button.Group vertical>
-                  <Button color="purple" onClick={forVote}>For</Button>
+                  <Button color="purple" onClick={forVote} >For</Button>
                   <Button basic color="purple" onClick={againstVote}>Against</Button>
                 </Button.Group>
               </td>
