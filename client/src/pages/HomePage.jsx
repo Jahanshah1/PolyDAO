@@ -14,6 +14,7 @@ import Web3 from "web3/dist/web3.min.js";
 import Governence from "../abi/Governence.json";
 import connector from "../services/connector";
 import getNFTs from "../services/tatum";
+import {ethers} from "ethers";
 
 const HomePage = () => {
   const web3 = new Web3();
@@ -21,22 +22,22 @@ const HomePage = () => {
   const [selectedNFT, setSelectedNFT] = useState();
   const [loading, setLoading] = useState(true);
   const [contract, setContract] = useState();
-  const { active, library, account, activate } = useWeb3React();
+  const {  activate, active, library: provider } = useWeb3React();
   const [query, setQuery] = React.useState(
     "0xc4ea80deCA2415105746639eC16cB0cF8378996A"
   );
 
   const GOVERNENCE_ADDRESS = "0xe442f72b802bbcf7b3ec7b90278becc2fc46985c";
 
-  useEffect(() => {
-    if (active) {
-      const res = new library.eth.Contract(Governence, GOVERNENCE_ADDRESS);
-      setContract(res);
-    }
-  }, [active]);
+  // useEffect(() => {
+  //   if (active) {
+  //     const res = new library.eth.Contract(Governence, GOVERNENCE_ADDRESS);
+  //     setContract(res);
+  //   }
+  // }, [active]);
 
   useEffect(() => {
-    console.log("useEffect", library);
+    // console.log("useEffect", library);
     if (web3.utils.isAddress(query) && query != "") {
       setLoading(true);
       getNFTs(query).then((data) => {
@@ -47,34 +48,33 @@ const HomePage = () => {
   }, [query]);
 
   const handlePropose = async () => {
+    console.log("Starting contract execution")
     if (!active) activate(connector);
     setSelectedNFT(null);
-    // const functionalData = library.eth.abi.encodeFunctionCall(
-    //   {
-    //     name: "transferFrom",
-    //     type: "function",
-    //     inputs: [
-    //       {
-    //         type: "address",
-    //         name: "myNumber",
-    //       },
-    //       {
-    //         type: "uint256",
-    //         name: "myString",
-    //       },
-    //     ],
-    //   },
-    //   ["2345675643", "Hello!%"]
-    // );
-    const data = await contract.methods
-      .propose(
-        ["0xe442f72B802BBcF7b3ec7b90278BecC2Fc46985c"],
-        [0],
-        ["0xf"],
-        "TEST Proposal #1"
-      )
-      .send({ from: account, gas: "35000000" });
-    console.log(data);
+
+    // Using ether library for contract interaction
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner()
+    // const signer = "0x0550f5196Ec5C453F8326C7B9bBc3aE60ACaac7A"
+    const ca = "0xe442f72b802bbcf7b3ec7b90278becc2fc46985c"
+    const contract = new ethers.Contract(ca,Governence,signer);
+    await contract.propose(
+      ["0xe442f72B802BBcF7b3ec7b90278BecC2Fc46985c"],
+      [1],
+      ["0xe442f72B802BBcF7b3ec7b90278BecC2Fc46985c"],
+      "Test"
+    )
+
+
+    // const data = await contract.methods
+    //   .propose(
+    //     ["0xe442f72B802BBcF7b3ec7b90278BecC2Fc46985c"],
+    //     [0],
+    //     ["0xf"],
+    //     "TEST Proposal #1"
+    //   )
+    //   .send({ from: account, gas: "35000000" });
+    // console.log(data);
   };
 
   return (
