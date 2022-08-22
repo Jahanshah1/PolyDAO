@@ -50,6 +50,7 @@ https://youtu.be/mvnrL6GT6E0
 - Javscript 
 - Typescript 
 - Tatum API
+- Polygon Mumbai testnet
 
 ## Run locally 
 Clone the project 
