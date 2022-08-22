@@ -39,7 +39,7 @@ link : https://mumbai.polygonscan.com/tx/0x22f3e5b1669b5f3c080818442a6ce80329e3b
 Contract Address : 0x25648830919d2d1c505b0b6a53cd52c88faabd9d
 
 ### Demo link ( vid )
-https://youtu.be/tvyhJXkAqd0
+https://youtu.be/mvnrL6GT6E0
 
 
 ## Tech Stack used 
@@ -68,7 +68,7 @@ start localhost
 ```bash 
 npm start
 ```
-If there are any problems please refer to https://github.com/Jahanshah1/NFTDAO/blob/main/troubleshoot.md
+If there are any problems please refer to https://github.com/Jahanshah1/PolyDAO/blob/main/troubleshoot.md
 
 ## Future plans 1.0
 - [x] Add NFTs on CELO for selection 
